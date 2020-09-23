@@ -1,0 +1,41 @@
+.page {
+	$this: &;
+
+	flex: auto;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+
+	&__head {
+		position: relative;
+		display: block;
+		margin: 0 0 20px;
+		padding: 0;
+	}
+
+	&__body {
+		flex: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&--home {
+		max-width: 1440px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin: 0 auto;
+		align-items: center;
+
+		.react-logo {
+			width: 100%;
+			max-width: 300px;
+
+			@media (prefers-reduced-motion: no-preference) {
+				animation: react-logo-spin infinite 20s linear;
+			}
+		}
+	}
+}
