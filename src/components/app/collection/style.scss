@@ -1,6 +1,9 @@
 .contacts {
-	$this: &;
-	width: 100%;
+	$this     : &;
+	width     : 100%;
+	text-align: left;
+	overflow-x: auto;
+	overflow-y: hidden;
 
 	table,
 	&__none,
@@ -19,18 +22,34 @@
 	&__grid.displayGrid {
 		display: grid;
 	}
-	
-	&__shadow {
+
+	&__shadow,
+	&__block {
 		display: block;
 	}
 
 	&__shadow {
-		position: fixed;
-		width: 100%;
-		height: 100%;
+		position  : fixed;
+		width     : 100%;
+		height    : 100%;
 		background: rgba(0, 0, 0, 0.2);
-		left: 0;
-		top: 0;
+		left      : 0;
+		top       : 0;
+		z-index   : 99;
+	}
+
+	&__error {
+		position     : fixed;
+		left         : 0;
+		right        : 0;
+		top          : 20%;
+		max-width    : 60%;
+		margin       : 0 auto;
+		padding      : 60px 40px;
+		text-align   : center;
+		border-radius: 10px;
+		background   : white;
+		z-index      : 9999;
 	}
 
 	&__header,
@@ -41,15 +60,25 @@
 		justify-content: space-between;
 	}
 
-	&__header span {
+	&__header span,
+	&__error span,
+	&__error p {
 		font-size: 20px;
 		color    : #eb2f96;
-		opacity  : .2;
+	}
+
+	&__error p span {
+		margin-right: 10px;
+	}
+
+	&__header span {
+		opacity: .2;
 	}
 
 	&__header span:hover,
 	&__view span:first-child.displayTable,
-	&__view span:last-child.displayGrid {
+	&__view span:last-child.displayGrid,
+	&__error>span {
 		color  : #40a9ff;
 		opacity: 1;
 	}
@@ -60,7 +89,8 @@
 	}
 
 	table,
-	&__grid, h1,
+	&__grid,
+	h1,
 	&__filter {
 		margin: 40px auto;
 	}
@@ -95,7 +125,7 @@
 
 	&__tooltip {
 		position     : absolute;
-		padding      : 0 8px;
+		padding      : 0 8px 3px;
 		border-radius: 5px;
 		background   : #1c1c3c;
 		color        : white;
@@ -110,6 +140,32 @@
 		font-weight: bold;
 	}
 
-	@media screen and (max-width: 1360px) {}
+	@media screen and (max-width: 1180px) {
+		table {
+			overflow-x: auto;
+			overflow-y: hidden;
+			font-size : 12px;
+		}
 
+		.contacts table td:nth-child(4),
+		.contacts__filter p {
+			min-width: 80px;
+		}
+
+		.contacts table th,
+		.contacts table td,
+		.contacts__filter p {
+			padding: 5px;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.contacts__filter div {
+			flex-flow: column;
+		}
+		.contacts__error {
+			max-width: 90%;
+		}
+	}
+	
 }
