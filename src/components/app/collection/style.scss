@@ -2,27 +2,24 @@
 	$this     : &;
 	width     : 100%;
 	text-align: left;
-	overflow-x: auto;
-	overflow-y: hidden;
 
-	table,
+	&__table,
 	&__none,
 	&__grid {
 		display: none;
 	}
 
-	table {
-		width: 100%;
-	}
-
-	table.displayTable {
-		display: table;
+	&__table {
+		width     : 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
 	}
 
 	&__grid.displayGrid {
 		display: grid;
 	}
 
+	&__table.displayTable,
 	&__shadow,
 	&__block {
 		display: block;
@@ -88,7 +85,7 @@
 		margin-left: 20px;
 	}
 
-	table,
+	&__table,
 	&__grid,
 	h1,
 	&__filter {
@@ -142,12 +139,10 @@
 
 	@media screen and (max-width: 1180px) {
 		table {
-			overflow-x: auto;
-			overflow-y: hidden;
-			font-size : 12px;
+			font-size: 12px;
 		}
 
-		.contacts table td:nth-child(4),
+		&__table table td:nth-child(4),
 		.contacts__filter p {
 			min-width: 80px;
 		}
@@ -163,9 +158,10 @@
 		.contacts__filter div {
 			flex-flow: column;
 		}
+
 		.contacts__error {
 			max-width: 90%;
 		}
 	}
-	
+
 }

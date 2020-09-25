@@ -130,40 +130,42 @@ export const View = () => {
                     <p onClick={handleSortByItems} className={'default'} data-tooltip="Click to reset">reset</p>
                 </div>
             </div>
-            <table className={localView}>
-                <thead>
-                    <tr>
-                        <th rowSpan="2">NAME</th>
-                        <th rowSpan="2">BIRTHDAY</th>
-                        <th rowSpan="2">EMAIL</th>
-                        <th rowSpan="2">TELEPHONE</th>
-                        <th rowSpan="1" colSpan="2">ADDRESS</th>
-                        <th rowSpan="2">GENDER</th>
-                        <th rowSpan="2">NAT</th>
-                        <th rowSpan="2">USERNAME</th>
-                    </tr>
-                    <tr>
-                        <th>country</th>
-                        <th>street, city, state postcode</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {contacts && contacts.length > 0 &&
-                        contacts.slice(pages.min, pages.max).map((user, index) => (
-                            <tr key={index}>
-                                <td>{user.name.first} {user.name.last}</td>
-                                <td>{new Date(user.dob.date).toLocaleDateString('en-US')}</td>
-                                <td><a href={"mailto:" + user.email} target="_blank" rel="noopener noreferrer">{user.email}</a></td>
-                                <td><a href={"tel:" + user.phone}>{user.phone}</a></td>
-                                <td>{user.location.country}</td>
-                                <td>{user.location.street.number} {user.location.street.name}, {user.location.city}, {user.location.state} {user.location.postcode}</td>
-                                <td>{user.gender}</td>
-                                <td>{user.nat}</td>
-                                <td>{user.login.username}</td>
-                            </tr>
-                        ))}
-                </tbody>
-            </table>
+            <div className={localView + ' contacts__table'}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowSpan="2">NAME</th>
+                            <th rowSpan="2">BIRTHDAY</th>
+                            <th rowSpan="2">EMAIL</th>
+                            <th rowSpan="2">TELEPHONE</th>
+                            <th rowSpan="1" colSpan="2">ADDRESS</th>
+                            <th rowSpan="2">GENDER</th>
+                            <th rowSpan="2">NAT</th>
+                            <th rowSpan="2">USERNAME</th>
+                        </tr>
+                        <tr>
+                            <th>country</th>
+                            <th>street, city, state postcode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {contacts && contacts.length > 0 &&
+                            contacts.slice(pages.min, pages.max).map((user, index) => (
+                                <tr key={index}>
+                                    <td>{user.name.first} {user.name.last}</td>
+                                    <td>{new Date(user.dob.date).toLocaleDateString('en-US')}</td>
+                                    <td><a href={"mailto:" + user.email} target="_blank" rel="noopener noreferrer">{user.email}</a></td>
+                                    <td><a href={"tel:" + user.phone}>{user.phone}</a></td>
+                                    <td>{user.location.country}</td>
+                                    <td>{user.location.street.number} {user.location.street.name}, {user.location.city}, {user.location.state} {user.location.postcode}</td>
+                                    <td>{user.gender}</td>
+                                    <td>{user.nat}</td>
+                                    <td>{user.login.username}</td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+            </div>
             <div className={localView + ' contacts__grid'}>
                 {contacts && contacts.length > 0 &&
                     contacts.slice(pages.min, pages.max).map((user, index) => (
