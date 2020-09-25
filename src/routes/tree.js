@@ -5,7 +5,7 @@ import {
 
 const routes = {
 	'home': {
-		path: '/',
+		path: '/blank-app',
 		page: PageHome,
 		name: 'Home',
 		link () {
