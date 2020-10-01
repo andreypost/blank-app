@@ -50,14 +50,14 @@ export const View = () => {
     const handleSortByItems = (e) => {
         let arr = [].concat(contacts)
         if (e.target.classList.contains('ascend')) {
-            arr.sort((a, b) => a.name.first > b.name.first ? 1 : -1)
+            arr.sort((a, b) => a.name.first.localeCompare(b.name.first))
             setClassSort('descend')
             setTooltipName('Click sort by Z-A')
             handleRemoveTooltip()
             setContacts(arr)
             return
         } else if (e.target.classList.contains('descend')) {
-            arr.sort((a, b) => a.name.first < b.name.first ? 1 : -1)
+            arr.reverse()
             setClassSort('default')
             setTooltipName('Click to cancel sort')
             handleRemoveTooltip()
@@ -70,11 +70,11 @@ export const View = () => {
             setContacts(baseContacts)
             return
         } else if (e.target.classList.contains('gender')) {
-            arr.sort((a, b) => a.gender > b.gender ? 1 : -1)
+            arr.sort((a, b) => a.gender.localeCompare(b.gender))
         } else if (e.target.classList.contains('nat')) {
-            arr.sort((a, b) => a.nat > b.nat ? 1 : -1)
+            arr.sort((a, b) => a.nat.localeCompare(b.nat))
         } else if (e.target.classList.contains('username')) {
-            arr.sort((a, b) => a.login.username > b.login.username ? 1 : -1)
+            arr.sort((a, b) => a.login.username.localeCompare(b.login.username))
         }
         handleRemoveTooltip()
         setContacts(arr)
