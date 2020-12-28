@@ -13,4 +13,4 @@ export const APP_NAME = process.env.REACT_APP_NAME || 'Wezom React-Redux Test';
 export const API_URL = process.env.REACT_APP_API_URL || undefined;
 export const API_VERSION = process.env.REACT_APP_API_VERSION || undefined;
 export const API_CONTACTS_SEED_KEY = process.env.REACT_APP_API_CONTACTS_SEED_KEY || undefined;
-export const HISTORY_BASENAME = process.env.REACT_APP_HISTORY_BASENAME || '/';
+export const HISTORY_BASENAME = process.env.REACT_APP_HISTORY_BASENAME || '';

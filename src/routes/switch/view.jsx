@@ -8,7 +8,6 @@ const View = React.memo(() => {
 		<Switch>
 			{Object.keys(routes).map((key) => {
 				const { page: Page, ...route } = routes[key];
-
 				return (
 					<Route
 						key={route.path}
