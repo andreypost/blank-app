@@ -15,7 +15,7 @@ const routes = {
 		exact: true,
 	},
 	'contacts': {
-		path: '/Contacts',
+		path: '/blank-app/contacts',
 		page: Contacts,
 		name: 'Contacts',
 		link () {
