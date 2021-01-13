@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/blank-app/static/css/main.88ce771f.chunk.css",
-    "main.js": "/blank-app/static/js/main.89bf8b2e.chunk.js",
+    "main.js": "/blank-app/static/js/main.e3fdf473.chunk.js",
     "runtime-main.js": "/blank-app/static/js/runtime-main.9bbce275.js",
     "static/css/2.08c04568.chunk.css": "/blank-app/static/css/2.08c04568.chunk.css",
     "static/js/2.c18fb40a.chunk.js": "/blank-app/static/js/2.c18fb40a.chunk.js",
     "index.html": "/blank-app/index.html",
-    "precache-manifest.c840ac1c614d5d33befae953b4f1709c.js": "/blank-app/precache-manifest.c840ac1c614d5d33befae953b4f1709c.js",
+    "precache-manifest.0e18267bff45f1b07d2a00bd8d9f82b7.js": "/blank-app/precache-manifest.0e18267bff45f1b07d2a00bd8d9f82b7.js",
     "service-worker.js": "/blank-app/service-worker.js",
     "static/js/2.c18fb40a.chunk.js.LICENSE.txt": "/blank-app/static/js/2.c18fb40a.chunk.js.LICENSE.txt",
     "static/media/backdrop.jpg": "/blank-app/static/media/backdrop.f7eab148.jpg",
@@ -18,6 +18,6 @@
     "static/css/2.08c04568.chunk.css",
     "static/js/2.c18fb40a.chunk.js",
     "static/css/main.88ce771f.chunk.css",
-    "static/js/main.89bf8b2e.chunk.js"
+    "static/js/main.e3fdf473.chunk.js"
   ]
 }
