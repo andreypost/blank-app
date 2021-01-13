@@ -21,7 +21,7 @@ export const View = () => {
     const fetchRequest = () => {
         setError('contacts__none')
         setShadow('contacts__shadow')
-        fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`)
+        fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`, {mode: 'no-cors'})
             .then(response => response.json())
             .then(json => handleViewUsers(json.results))
             .catch(error => handleErrorFetch(error))
