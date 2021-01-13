@@ -13,7 +13,7 @@ export const View = () => {
     const [tooltipName, setTooltipName] = useState('Click sort by A-Z');
     const [shadow, setShadow] = useState('');
     const [error, setError] = useState('contacts__none')
-    let div;
+    let div, viewStorage = window.localStorage
 
     const handleErrorFetch = () => {
         setError('contacts__block')
@@ -22,20 +22,22 @@ export const View = () => {
         setError('contacts__none')
         setShadow('contacts__shadow')
         // fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`, {mode: 'no-cors'})  // don't work inthis case
+        // fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`,{ credentials: "include" }) // with cookies or HTTP authentication
         fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`)
             .then(response => response.json())
-            .then(json => handleViewUsers(json.results))
+            .then(json => handleViewUsers(json, json.results))
             .catch(error => handleErrorFetch(error))
     }
-    const handleViewUsers = (results) => {
+    const handleViewUsers = (json, results) => {
+        console.log(json)
         setContacts(results)
         setBaseContacts(results)
         setClassSort('ascend')
         setTooltipName('Click sort by A-Z')
-        if (localStorage.getItem('view')) {
-            setlocalView(localStorage.getItem('view'))
-        } else if (!localStorage.getItem('view')) {
-            localStorage.setItem('view', 'displayTable')
+        if (viewStorage.getItem('view')) {
+            setlocalView(viewStorage.getItem('view'))
+        } else if (!viewStorage.getItem('view')) {
+            viewStorage.setItem('view', 'displayTable')
             setlocalView('displayTable')
         }
         let female = 0, male = 0, binary = 0, most = {}
@@ -85,14 +87,14 @@ export const View = () => {
     }
     const handleViewTable = (e) => {
         if (e.target.classList.contains('displayTable')) return
-        localStorage.removeItem('view')
-        localStorage.setItem('view', 'displayTable')
+        viewStorage.removeItem('view')
+        viewStorage.setItem('view', 'displayTable')
         setlocalView('displayTable')
     }
     const handleViewGrid = (e) => {
         if (e.target.classList.contains('displayGrid')) return
-        localStorage.removeItem('view')
-        localStorage.setItem('view', 'displayGrid')
+        viewStorage.removeItem('view')
+        viewStorage.setItem('view', 'displayGrid')
         setlocalView('displayGrid')
     }
     const handleToolip = (e) => {
@@ -109,10 +111,7 @@ export const View = () => {
         if (div) div.remove()
     }
     useEffect(() => {
-    }, [])
-    useCallback(() => {
         fetchRequest()
-
     }, [])
     return (
         <div className={'contacts'}>
