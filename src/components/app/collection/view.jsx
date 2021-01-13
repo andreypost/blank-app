@@ -1,5 +1,5 @@
 import './style.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Pagination } from 'antd';
 import { ReloadOutlined, AppstoreOutlined, BarsOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
@@ -21,7 +21,8 @@ export const View = () => {
     const fetchRequest = () => {
         setError('contacts__none')
         setShadow('contacts__shadow')
-        fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`, {mode: 'no-cors'})
+        // fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`, {mode: 'no-cors'})  // don't work inthis case
+        fetch(`https://randomuser.me/api/?results=${Math.floor(Math.random() * (100 - 30 + 1)) + 30}`)
             .then(response => response.json())
             .then(json => handleViewUsers(json.results))
             .catch(error => handleErrorFetch(error))
@@ -108,7 +109,10 @@ export const View = () => {
         if (div) div.remove()
     }
     useEffect(() => {
+    }, [])
+    useCallback(() => {
         fetchRequest()
+
     }, [])
     return (
         <div className={'contacts'}>
