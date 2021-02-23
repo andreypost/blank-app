@@ -1,6 +1,6 @@
 {
   "name": "react-redux-test",
-  "homepage": "https://andreypost.github.io/blank-app",
+  "homepage": "https://andreypost.github.io/contacts-table",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
