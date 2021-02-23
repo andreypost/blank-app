@@ -1,5 +1,5 @@
 import './style.scss';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pagination } from 'antd';
 import { ReloadOutlined, AppstoreOutlined, BarsOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
