@@ -9,7 +9,7 @@ export const ALLOW_REDUX_DEVTOOLS_EXTENSION = process.env.REACT_APP_ALLOW_REDUX_
 export const ALLOW_WINDOW_EXTENDS = process.env.REACT_APP_ALLOW_WINDOW_EXTENDS === 'true';
 
 /** App */
-export const APP_NAME = process.env.REACT_APP_NAME || 'Wezom React-Redux Test';
+export const APP_NAME = process.env.REACT_APP_NAME || 'Contacts-Table';
 export const API_URL = process.env.REACT_APP_API_URL || undefined;
 export const API_VERSION = process.env.REACT_APP_API_VERSION || undefined;
 export const API_CONTACTS_SEED_KEY = process.env.REACT_APP_API_CONTACTS_SEED_KEY || undefined;

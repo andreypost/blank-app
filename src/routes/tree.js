@@ -5,7 +5,7 @@ import {
 
 const routes = {
 	'home': {
-		path: '/blank-app',
+		path: '/contacts-table/',
 		// path: '/',
 		page: PageHome,
 		name: 'Home',
@@ -15,7 +15,7 @@ const routes = {
 		exact: true,
 	},
 	'contacts': {
-		path: '/blank-app/contacts',
+		path: '/contacts-table/contacts/',
 		page: Contacts,
 		name: 'Contacts',
 		link () {
