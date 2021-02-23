@@ -1,6 +1,6 @@
 {
   "name": "contacts-table",
-  "homepage": "https://andreypost.github.io/contacts-table",
+  "homepage": "https://andreypost.github.io/contacts-table/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
