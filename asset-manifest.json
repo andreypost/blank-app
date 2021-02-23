@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/blank-app/static/css/main.88ce771f.chunk.css",
-    "main.js": "/blank-app/static/js/main.e3fdf473.chunk.js",
-    "runtime-main.js": "/blank-app/static/js/runtime-main.9bbce275.js",
-    "static/css/2.08c04568.chunk.css": "/blank-app/static/css/2.08c04568.chunk.css",
-    "static/js/2.c18fb40a.chunk.js": "/blank-app/static/js/2.c18fb40a.chunk.js",
-    "index.html": "/blank-app/index.html",
-    "precache-manifest.0e18267bff45f1b07d2a00bd8d9f82b7.js": "/blank-app/precache-manifest.0e18267bff45f1b07d2a00bd8d9f82b7.js",
-    "service-worker.js": "/blank-app/service-worker.js",
-    "static/js/2.c18fb40a.chunk.js.LICENSE.txt": "/blank-app/static/js/2.c18fb40a.chunk.js.LICENSE.txt",
-    "static/media/backdrop.jpg": "/blank-app/static/media/backdrop.f7eab148.jpg",
-    "static/media/react-logo.svg": "/blank-app/static/media/react-logo.ee7cd8ed.svg",
-    "static/media/wezom-logo.svg": "/blank-app/static/media/wezom-logo.324b96ae.svg"
+    "main.css": "/contacts-table/static/css/main.88ce771f.chunk.css",
+    "main.js": "/contacts-table/static/js/main.9bf04875.chunk.js",
+    "runtime-main.js": "/contacts-table/static/js/runtime-main.741c002a.js",
+    "static/css/2.08c04568.chunk.css": "/contacts-table/static/css/2.08c04568.chunk.css",
+    "static/js/2.c18fb40a.chunk.js": "/contacts-table/static/js/2.c18fb40a.chunk.js",
+    "index.html": "/contacts-table/index.html",
+    "precache-manifest.b498641016600af161a6a1de774a71bc.js": "/contacts-table/precache-manifest.b498641016600af161a6a1de774a71bc.js",
+    "service-worker.js": "/contacts-table/service-worker.js",
+    "static/js/2.c18fb40a.chunk.js.LICENSE.txt": "/contacts-table/static/js/2.c18fb40a.chunk.js.LICENSE.txt",
+    "static/media/backdrop.jpg": "/contacts-table/static/media/backdrop.f7eab148.jpg",
+    "static/media/react-logo.svg": "/contacts-table/static/media/react-logo.ee7cd8ed.svg",
+    "static/media/wezom-logo.svg": "/contacts-table/static/media/wezom-logo.324b96ae.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9bbce275.js",
+    "static/js/runtime-main.741c002a.js",
     "static/css/2.08c04568.chunk.css",
     "static/js/2.c18fb40a.chunk.js",
     "static/css/main.88ce771f.chunk.css",
-    "static/js/main.e3fdf473.chunk.js"
+    "static/js/main.9bf04875.chunk.js"
   ]
 }
