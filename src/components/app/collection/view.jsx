@@ -9,69 +9,63 @@ import {
 } from "@ant-design/icons";
 
 export const View = () => {
-	const [contacts, setContacts] = useState([]);
-	const [baseContacts, setBaseContacts] = useState([]);
-	const [pages, setPages] = useState({ min: 0, max: 10 });
-	const [statistics, setStatistics] = useState({
-		persons: 0,
-		female: 0,
-		male: 0,
-		binary: 0,
-		most: 0,
-		mostGender: "",
-	});
-	const [classSort, setClassSort] = useState("ascend");
-	const [localView, setlocalView] = useState("");
-	const [tooltipName, setTooltipName] = useState("Click sort by A-Z");
-	const [shadow, setShadow] = useState("");
-	const [error, setError] = useState("contacts__none");
-	let div,
+	let div = document.createElement("div"),
 		viewStorage = window.localStorage;
+	// viewStorage.clear("view");
+	if (!viewStorage.getItem("view"))
+		viewStorage.setItem("view", "displayTable");
+	const [contacts, setContacts] = useState([]),
+		[baseContacts, setBaseContacts] = useState([]),
+		[pages, setPages] = useState({ min: 0, max: 10 }),
+		[statistics, setStatistics] = useState({
+			persons: 0,
+			female: 0,
+			male: 0,
+			binary: 0,
+			most: 0,
+			mostGender: "",
+		}),
+		[classSort, setClassSort] = useState("ascend"),
+		[localView, setlocalView] = useState(viewStorage.getItem("view")),
+		[tooltipName, setTooltipName] = useState("Click sort by A-Z"),
+		[shadow, setShadow] = useState(""),
+		[error, setError] = useState("contacts__none");
 
 	const handleErrorFetch = () => {
 		setError("contacts__block");
 	};
-	const handleViewUsers = useCallback(
-		(json, results) => {
-			console.log(json);
-			setContacts(results);
-			setBaseContacts(results);
-			setClassSort("ascend");
-			setTooltipName("Click sort by A-Z");
-			if (viewStorage.getItem("view")) {
-				setlocalView(viewStorage.getItem("view"));
-			} else if (!viewStorage.getItem("view")) {
-				viewStorage.setItem("view", "displayTable");
-				setlocalView("displayTable");
-			}
-			let female = 0,
-				male = 0,
-				binary = 0,
-				most = {};
-			results.map((user) => {
-				return (most.num = Math.max(
-					(female += 1 ? user.gender === "female" : null),
-					(male += 1 ? user.gender === "male" : null),
-					(binary += 1 ? user.gender === "non-binary" : null)
-				));
-			});
-			most.num === female
-				? (most.gender = "femail")
-				: most.num === male
-				? (most.gender = "male")
-				: (most.gender = "non-binary");
-			setStatistics({
-				persons: results.length,
-				female: female,
-				male: male,
-				binary: binary,
-				most: most.num,
-				mostGender: most.gender,
-			});
-			setShadow("contacts__none");
-		},
-		[viewStorage]
-	);
+	const handleViewUsers = useCallback((json, results) => {
+		console.log(json);
+		setContacts(results);
+		setBaseContacts(results);
+		setClassSort("ascend");
+		setTooltipName("Click sort by A-Z");
+		let female = 0,
+			male = 0,
+			binary = 0,
+			most = {};
+		results.map((user) => {
+			return (most.num = Math.max(
+				(female += 1 ? user.gender === "female" : null),
+				(male += 1 ? user.gender === "male" : null),
+				(binary += 1 ? user.gender === "non-binary" : null)
+			));
+		});
+		most.num === female
+			? (most.gender = "femail")
+			: most.num === male
+			? (most.gender = "male")
+			: (most.gender = "non-binary");
+		setStatistics({
+			persons: results.length,
+			female: female,
+			male: male,
+			binary: binary,
+			most: most.num,
+			mostGender: most.gender,
+		});
+		setShadow("contacts__none");
+	}, []);
 	const fetchRequest = useCallback(() => {
 		setError("contacts__none");
 		setShadow("contacts__shadow");
@@ -127,21 +121,20 @@ export const View = () => {
 			: setPages({ min: (page - 1) * pageSize, max: pageSize * page });
 	};
 	const handleViewTable = (e) => {
-		if (e.target.classList.contains("displayTable")) return;
-		viewStorage.removeItem("view");
-		viewStorage.setItem("view", "displayTable");
-		setlocalView("displayTable");
+		if (!e.currentTarget.classList.contains("displayTable")) {
+			viewStorage.setItem("view", "displayTable");
+			setlocalView("displayTable");
+		}
 	};
 	const handleViewGrid = (e) => {
-		if (e.target.classList.contains("displayGrid")) return;
-		viewStorage.removeItem("view");
-		viewStorage.setItem("view", "displayGrid");
-		setlocalView("displayGrid");
+		if (!e.currentTarget.classList.contains("displayGrid")) {
+			viewStorage.setItem("view", "displayGrid");
+			setlocalView("displayGrid");
+		}
 	};
 	const handleToolip = (e) => {
 		if (!e.target.dataset.tooltip) return;
 		let coords = e.target.getBoundingClientRect();
-		div = document.createElement("div");
 		document.body.append(div);
 		div.innerHTML = e.target.dataset.tooltip;
 		div.classList.add("contacts__tooltip");
@@ -156,11 +149,11 @@ export const View = () => {
 		fetchRequest();
 	}, [fetchRequest]);
 	return (
-		<div className={"contacts"}>
+		<div className="contacts">
 			<h1>Contacts</h1>
-			<div className={"contacts__header"}>
+			<div className="contacts__header">
 				<ReloadOutlined onClick={fetchRequest} />
-				<div className={"contacts__view"}>
+				<div className="contacts__view">
 					<BarsOutlined
 						onClick={handleViewTable}
 						className={localView}
@@ -171,7 +164,7 @@ export const View = () => {
 					/>
 				</div>
 			</div>
-			<div className={"contacts__filter"}>
+			<div className="contacts__filter">
 				<h3>Filter by:</h3>
 				<div
 					onMouseOver={handleToolip}
@@ -186,28 +179,28 @@ export const View = () => {
 					</p>
 					<p
 						onClick={handleSortByItems}
-						className={"gender"}
+						className="gender"
 						data-tooltip="Click to sort"
 					>
 						genfer
 					</p>
 					<p
 						onClick={handleSortByItems}
-						className={"nat"}
+						className="nat"
 						data-tooltip="Click to sort"
 					>
 						nationality
 					</p>
 					<p
 						onClick={handleSortByItems}
-						className={"username"}
+						className="username"
 						data-tooltip="Click to sort"
 					>
 						username
 					</p>
 					<p
 						onClick={handleSortByItems}
-						className={"default"}
+						className="default"
 						data-tooltip="Click to reset"
 					>
 						reset
@@ -237,45 +230,43 @@ export const View = () => {
 					<tbody>
 						{contacts &&
 							contacts.length > 0 &&
-							contacts
-								.slice(pages.min, pages.max)
-								.map((user, index) => (
-									<tr key={index}>
-										<td>
-											{user.name.first} {user.name.last}
-										</td>
-										<td>
-											{new Date(
-												user.dob.date
-											).toLocaleDateString("en-US")}
-										</td>
-										<td>
-											<a
-												href={"mailto:" + user.email}
-												target="_blank"
-												rel="noopener noreferrer"
-											>
-												{user.email}
-											</a>
-										</td>
-										<td>
-											<a href={"tel:" + user.phone}>
-												{user.phone}
-											</a>
-										</td>
-										<td>{user.location.country}</td>
-										<td>
-											{user.location.street.number}{" "}
-											{user.location.street.name},{" "}
-											{user.location.city},{" "}
-											{user.location.state}{" "}
-											{user.location.postcode}
-										</td>
-										<td>{user.gender}</td>
-										<td>{user.nat}</td>
-										<td>{user.login.username}</td>
-									</tr>
-								))}
+							contacts.slice(pages.min, pages.max).map((user) => (
+								<tr key={user.email}>
+									<td>
+										{user.name.first} {user.name.last}
+									</td>
+									<td>
+										{new Date(
+											user.dob.date
+										).toLocaleDateString("en-US")}
+									</td>
+									<td>
+										<a
+											href={"mailto:" + user.email}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{user.email}
+										</a>
+									</td>
+									<td>
+										<a href={"tel:" + user.phone}>
+											{user.phone}
+										</a>
+									</td>
+									<td>{user.location.country}</td>
+									<td>
+										{user.location.street.number}{" "}
+										{user.location.street.name},{" "}
+										{user.location.city},{" "}
+										{user.location.state}{" "}
+										{user.location.postcode}
+									</td>
+									<td>{user.gender}</td>
+									<td>{user.nat}</td>
+									<td>{user.login.username}</td>
+								</tr>
+							))}
 					</tbody>
 				</table>
 			</div>
@@ -283,7 +274,7 @@ export const View = () => {
 				{contacts &&
 					contacts.length > 0 &&
 					contacts.slice(pages.min, pages.max).map((user, index) => (
-						<div key={index}>
+						<div key={user.email}>
 							<h5>NAME</h5>
 							<p>
 								{user.name.first} {user.name.last}
